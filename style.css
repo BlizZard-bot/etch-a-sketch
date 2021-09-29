@@ -41,9 +41,10 @@ body {
   background-color: #ccc;
 }
 
-.btn-container {
+.container {
   display: flex;
   gap: 2em;
+  align-items: center;
 }
 
 .btn {
@@ -65,4 +66,20 @@ body {
   color: #fff;
   transform: scale(1.1);
   /* transition: 0.25s all ease; */
+}
+
+.box-number {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-size {
+  font-weight: bold;
+  text-align: center;
+}
+
+.grid-description {
+  font-size: 0.8rem;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.75);
 }
