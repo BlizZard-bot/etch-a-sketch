@@ -1,0 +1,57 @@
+:root {
+  --grid-width: 500px;
+  --grid-height: 500px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto";
+  line-height: 1.6;
+  display: grid;
+  place-items: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  gap: 10px;
+  width: var(--grid-width);
+  height: var(--grid-height);
+}
+
+.grid-item {
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+}
+
+.grid-hover {
+  background-color: #ccc;
+}
+
+.btn {
+  padding: 0.75em 1em;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #ccc;
+  color: #000;
+}
