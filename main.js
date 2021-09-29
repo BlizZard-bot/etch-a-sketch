@@ -2,8 +2,11 @@
 const gridContainer = document.querySelector(".grid-container");
 const slider = document.querySelector("input[type=range]");
 const gridSizeInfo = document.querySelector(".grid-size");
+const colorPicker = document.querySelector(".color-picker");
+let currentMode = "singleColor";
 let sideSquareNumber = 16;
 slider.value = 16;
+colorPicker.value = "#333333";
 // Function to generate divs based on user input of number of squares
 function generateGridDivs(sideSquareNumber) {
   let div = "";
@@ -16,12 +19,17 @@ function generateGridDivs(sideSquareNumber) {
 generateGridDivs(sideSquareNumber);
 
 // Function changing each individual box's background-color to a random color
-function changeBoxHoverColor(color) {
+function changeBoxHoverColor() {
   const gridItems = document.querySelectorAll(".grid-item");
   gridItems.forEach((item) => {
     item.addEventListener("mouseover", () => {
-      color = generateRandomColor();
-      item.style.backgroundColor = color;
+      if (currentMode === "rainbow") {
+        item.style.backgroundColor = generateRandomColor();
+      } else if (currentMode === "eraser") {
+        item.style.backgroundColor = "#fff";
+      } else if (currentMode === "singleColor") {
+        item.style.backgroundColor = colorPicker.value;
+      }
     });
   });
 }
@@ -59,6 +67,15 @@ clearButton.addEventListener("click", () => {
 
 const eraserButton = document.querySelector(".eraser-btn");
 eraserButton.addEventListener("click", () => {
-  color = "#fff";
-  changeBoxHoverColor(color);
+  currentMode = "eraser";
+});
+
+const rainbowButton = document.querySelector(".rainbow-btn");
+rainbowButton.addEventListener("click", () => {
+  currentMode = "rainbow";
+});
+
+const singleColorButton = document.querySelector(".single-color");
+singleColorButton.addEventListener("click", () => {
+  currentMode = "singleColor";
 });
