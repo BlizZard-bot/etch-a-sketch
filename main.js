@@ -20,17 +20,17 @@ generateGridDivs(sideSquareNumber);
 
 // Function changing each individual box's background-color to a random color
 function changeBoxHoverColor() {
-  const gridItems = document.querySelectorAll(".grid-item");
-  gridItems.forEach((item) => {
-    item.addEventListener("mouseover", () => {
+  const gridContainer = document.querySelector(".grid-container");
+  gridContainer.addEventListener("mouseover", (e) => {
+    if (e.target.className === "grid-item") {
       if (currentMode === "rainbow") {
-        item.style.backgroundColor = generateRandomColor();
+        e.target.style.backgroundColor = generateRandomColor();
       } else if (currentMode === "eraser") {
-        item.style.backgroundColor = "#fff";
+        e.target.style.backgroundColor = "#fff";
       } else if (currentMode === "singleColor") {
-        item.style.backgroundColor = colorPicker.value;
+        e.target.style.backgroundColor = colorPicker.value;
       }
-    });
+    }
   });
 }
 
